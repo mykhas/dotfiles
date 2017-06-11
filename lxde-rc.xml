@@ -172,18 +172,6 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <!-- <keybind key="C-A-Up">
-      <action name="DesktopUp">
-        <dialog>no</dialog>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="C-A-Down">
-      <action name="DesktopDown">
-        <dialog>no</dialog>
-        <wrap>no</wrap>
-      </action>
-    </keybind> -->
     <keybind key="S-A-Left">
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
@@ -192,18 +180,6 @@
     </keybind>
     <keybind key="S-A-Right">
       <action name="SendToDesktopRight">
-        <dialog>no</dialog>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Up">
-      <action name="SendToDesktopUp">
-        <dialog>no</dialog>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Down">
-      <action name="SendToDesktopDown">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
@@ -318,6 +294,34 @@
     <keybind key="A-C-t">
       <action name="Execute">
         <command>lxterminal</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer set Master 5%+ unmute</command>
+      </action>
+    </keybind>
+	<keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer set Master 5%- unmute</command>
+      </action>
+    </keybind>
+	<keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>xbacklight -20</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>Decrease screen brightness</name>
+        </startupnotify>
+      </action>
+    </keybind>
+	<keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>xbacklight +20</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>Increase screen brightness</name>
+        </startupnotify>
       </action>
     </keybind>
   </keyboard>
