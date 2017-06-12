@@ -324,6 +324,11 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="C-A-L">      
+      <action name="Execute">        
+        <command>xscreensaver-command -lock</command>      
+      </action>    
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>8</dragThreshold>
