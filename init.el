@@ -1,3 +1,5 @@
+;;; package -- General Emacs setup
+
 ;; MELPA
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -17,12 +19,27 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook 'toggle-truncate-lines)
+
+;; TERM
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
 
 ;; BASIC THEME AND SETTINGS
-(load-theme 'wombat t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'zenburn t)
 (set-frame-font "Fira Mono")
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 (setq-default indent-tabs-mode nil)
+(setq backup-directory-alist `(("." . "~/.emacs-saves")))
+
+;; FUNCTIONS
+(defun dear-diary ()
+  "This function can be used to create an org file with today as it's file name."
+  (interactive)
+  (find-file (concat "~/Documents/Dropbox/org/" (format-time-string "%Y-%W.org"))))
 
 ;; BASHRC
 (exec-path-from-shell-initialize)
@@ -102,7 +119,7 @@
 (setq company-tooltip-align-annotations t)
 
 ;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
+;; (add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
@@ -114,7 +131,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (tide ng2-mode typescript-mode web-mode flycheck xref-js2 js2-refactor js2-mode exec-path-from-shell flymake-json yafolding json-mode editorconfig))))
+    (multi-term tide ng2-mode typescript-mode web-mode flycheck xref-js2 js2-refactor js2-mode exec-path-from-shell flymake-json yafolding json-mode editorconfig))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
